@@ -239,20 +239,17 @@ GCS has multiple CORS formats, both XML and JSON. Unfortunately, their XML forma
 The JSON format consists of an array of CORS configuration objects. An example using POST policy document uploads is shown here:
 
 ```json
-{
-  "cors": [
-    {
-      "origin": ["https://my-app.com"],
-      "method": ["GET", "POST"],
-      "maxAgeSeconds": 3000
-    },
-    {
-      "origin": ["*"],
-      "method": ["GET"],
-      "maxAgeSeconds": 3000
-    }
-  ]
-}
+[{
+  "origin": ["https://my-app.com"],
+  "method": ["GET", "POST"],
+  "maxAgeSeconds": 3000
+ },
+ {
+  "origin": ["*"],
+  "method": ["GET"],
+  "maxAgeSeconds": 3000
+ }
+]
 ```
 
 Most AWS configurations should be fairly simple to port to this format. When using presigned `PUT` uploads, replace the `"POST"` method by `"PUT"` in the first entry.
